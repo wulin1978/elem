@@ -1,0 +1,14 @@
+@mixin bottom1px($color:#0f0){
+  position:relative;
+  &:after{
+    content:' ';
+    position: absolute;
+    height:1px;
+    width:400%;
+    left:0;
+    bottom:0;
+    background-color: $color;
+    transform:scale(.25, .25);
+    transform-origin: 0 0;
+  }
+}
