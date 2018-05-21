@@ -1,30 +1,7 @@
-# singlepage
+vue 学习踩坑系列：
 
-> A Vue.js project
+1、Vue 2.2.0+的版本里，当在组件中使用v-for时，key是必须设置的，否则会报 Elements in iteration expect to have 'v-bind:key' directives. 错误。
 
-## Build Setup
+比如 components/goods/goods.vue 中 “<li class='foodswrap' v-for='goodsitem in goods'>” 在编辑器就会提示有错（浏览器不会报错），必须加上 “:key='goodsitem.name'”，即改为 “<li class='foodswrap' v-for='goodsitem in goods' :key='goodsitem.name'>”。
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+注：:key='goodsitem.name' 中的 goodsitem.name 须为 String 或 Number，不能是对象或数组。

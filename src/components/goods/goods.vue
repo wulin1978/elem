@@ -2,7 +2,7 @@
 <div class='goodswrap'>
   <div class='goodsleft' ref='goodsleft'>
     <ul>
-      <li class='goodsclasswrap' v-if='goods' v-for='(item,index) in goods'>
+      <li class='goodsclasswrap' v-if='goods' v-for='(item,index) in goods' :key='item.name'>
         <router-link :to='"/goods/"+index'>
           <div class='goodsclass'><div class='goodsclasstitle'>{{item.name}}</div></div>
         </router-link>
@@ -11,9 +11,9 @@
   </div>
   <div class='goodsright' ref='goodsright'>
     <ul>
-      <li class='foodswrap' v-for='goodsitem in goods'>
+      <li class='foodswrap' v-for='goodsitem in goods' :key='goodsitem.name'>
         <div class='goodstitle'>{{goodsitem.name}}</div>
-        <div v-for='(foodsitem,foodsIndex) in goodsitem.foods' class='foodsItemWrap'>
+        <div v-for='(foodsitem,foodsIndex) in goodsitem.foods' class='foodsItemWrap' :key='foodsitem.name'>
           <div class='foodsItemImg' :style='"background-image:url("+foodsitem.icon+")"'></div>
           <div class='foodsItemtext'>
             <div class='foodsItemTitle'>{{foodsitem.name}}</div>
@@ -37,8 +37,8 @@ export default {
   },
   methods: {
     _initScroll () {
-      this.scrollright = new BScroll(this.$refs.goodsright, {})
       this.scrollleft = new BScroll(this.$refs.goodsleft, {})
+      this.scrollright = new BScroll(this.$refs.goodsright, {})
     }
   },
   created () {
@@ -51,6 +51,8 @@ export default {
 <style lang='scss'>
 @import '../../common/css/px2rem';
 .goodswrap{
+  height:100%;
+  overflow: hidden;
   display:flex;
   .active{
     display:block;
@@ -59,7 +61,9 @@ export default {
   }
 }
 .goodsleft{
+  height:100%;
   width:p2r(160);
+  overflow:hidden;
 }
   .goodsclasswrap{
     background:#f3f5f7;
@@ -73,15 +77,15 @@ export default {
         line-height:p2r(28);
         display:table-cell;
         vertical-align:middle;
-        font:{
+        font: {
           size:p2r(24);
           weight:200;
         }
         color:rgb(77,85,93);
       }
 .goodsright{
+  height:100%;
   flex:1;
-  height:500px;
   overflow:hidden;
   display: relative;
 }
@@ -110,7 +114,7 @@ export default {
       color: rbg(147,153,159);
     }
     .foodsItemWrap{
-      margin:{
+      margin: {
         top: p2r(36);
         left: p2r(36);
         right: p2r(36);
@@ -150,7 +154,7 @@ export default {
         .foodsItemPrice{
           font-size: p2r(28);
           color: rgb(240,20,20);
-          margin:{
+          margin: {
             top: p2r(16);
             bottom: p2r(36);
           }

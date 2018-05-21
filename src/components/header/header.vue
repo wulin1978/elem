@@ -28,6 +28,9 @@ export default {
       supports: ['decrease', 'discount', 'guarantee', 'invoice', 'special'],
       supportsIndex: 4
     }
+  },
+  mounted () {
+    console.log(this.$parent.test)
   }
 }
 </script>
