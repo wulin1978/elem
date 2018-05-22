@@ -1,5 +1,5 @@
 
-# vue 学习踩坑系列：
+# vue 学习踩坑系列：sf
 
   1、Vue 2.2.0+的版本里，当在组件中使用v-for时，key是必须设置的，否则会报 Elements in iteration expect to have 'v-bind:key' directives.   错误。
 
