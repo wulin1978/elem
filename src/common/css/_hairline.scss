@@ -1,0 +1,32 @@
+@mixin hairline($border-color:#000, $border-radius:0px, $direction:bottom, $border-style:solid){
+  border-radius:$border-radius;
+  position:relative;
+  &:after{
+    content:' ';
+    position: absolute;
+    height:400%;
+    width:400%;
+    border-radius:$border-radius*4;
+    @if $direction == border {
+      border:1px $border-style $border-color;
+    } @else if $direction == level {
+      border: {
+        top: 1px $border-style $border-color;
+        bottom: 1px $border-style $border-color;
+      }
+    } @else if $direction == vertical {
+      border: {
+        left: 1px $border-style $border-color;
+        right: 1px $border-style $border-color;
+      }
+    } @else {
+      border: {
+        #{$direction}: 1px $border-style $border-color;
+      }
+    }
+    left:0;
+    top:0px;
+    transform:scale(.25, .25);
+    transform-origin: 0 0;
+  }
+}
