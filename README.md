@@ -5,5 +5,7 @@
 
 比如 components/goods/goods.vue 中 “\<li class='foodswrap' v-for='goodsitem in goods'\>” 在编辑器就会提示有错（浏览器不会报错），必须加上 “:key='goodsitem.name'”，即改为 “\<li class='foodswrap' v-for='goodsitem in goods' :key='goodsitem.name'\>”。
 
-===
+---
 注：:key='goodsitem.name' 中的 goodsitem.name 须为 String 或 Number，不能是对象或数组。
+
+[Git 使用规范流程](http://www.ruanyifeng.com/blog/2015/08/git-use-process.html)
